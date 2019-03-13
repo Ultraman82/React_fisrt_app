@@ -27,12 +27,8 @@ class CommentForm extends Component{
             });          
         }
         handleFeedback(values) {
-            this.toggleModal();
-            console.log("Rating: " + values.rating + ", Yourname " + values.yourname
-                + ", Feedback" + values.feedback);
-            alert("Rating: " + values.rating + ", Yourname " + values.yourname
-                + ", Feedback" + values.feedback);
-
+            this.toggleModal();            
+            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
         }
 
     render(){
@@ -104,7 +100,7 @@ class CommentForm extends Component{
     }
 }
 
-    function RenderComments({comments}){
+    function RenderComments({comments, addComment, dishId}){
         if (comments != null) {
             return (
                 <div className="col-12 col-md-5 m-1">                        
@@ -117,7 +113,7 @@ class CommentForm extends Component{
                             </li>                                                     
                         )}
                     </ul>
-                    <CommentForm />    
+                    <CommentForm dishId={dishId} addComment={addComment} />   
                 </div>                
             )
         }
@@ -160,7 +156,10 @@ class CommentForm extends Component{
                         </div>
                         <div className="row">                   
                             <RenderDish dish={props.dish} />
-                            <RenderComments comments={props.comments} />                            
+                            <RenderComments comments={props.comments} 
+                                addComment={props.addComment}
+                                dishId={props.dishId}
+                            />                            
                         </div>
                     </div>
                 );
