@@ -22,17 +22,16 @@ function RenderCard({item, isLoading, errMess}) {
                 transformProps= {{
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
-            <Card>
-                <CardImg src={baseUrl + item.image} alt={item.name} />
-                <CardBody>
-                <CardTitle>{item.name}</CardTitle>
-                {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
-                <CardText>{item.description}</CardText>
-                </CardBody>
-            </Card>
-            </ FadeTransform>
+                <Card>
+                    <CardImg src={baseUrl + item.image} alt={item.name} />
+                    <CardBody>
+                    <CardTitle>{item.name}</CardTitle>
+                    {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
+                    <CardText>{item.description}</CardText>
+                    </CardBody>
+                </Card>
+            </ FadeTransform>   
         );
-
 }
 
 function Home(props) {
@@ -42,13 +41,17 @@ function Home(props) {
                 <div className="col-12 col-md m-1">                
                 <RenderCard item={props.dish}
                      isLoading={props.dishesLoading}
-                     errMess={props.dishErrMess} />
+                     errMess={props.dishErrMess}/>
                 </div>
                 <div className="col-12 col-md m-1">                
-                <RenderCard item={props.promotion} isLoading={props.promoLoading} errMess={props.promoErrMess} />
+                <RenderCard item={props.promotion}
+                    isLoading={props.promoLoading}
+                    errMess={props.promoErrMess}/>
                 </div>
                 <div className="col-12 col-md m-1">                
-                    <RenderCard item={props.leader} />
+                <RenderCard item={props.leader}
+                    isLoading={props.leadersLoading}
+                    errMess={props.leadersErrMess}/>
                 </div>                
             </div>
         </div>

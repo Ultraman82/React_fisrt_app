@@ -125,7 +125,7 @@ class CommentForm extends Component{
                         </Stagger>
                     </ul>
                     <CommentForm dishId={dishId} postComment={postComment} />
-                </div>                
+                    </div>                
             )
         }
         else {
